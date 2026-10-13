@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بهبد حمزه لو | دانشجوی مهندسی نرم‌افزار</title>
+    <!-- Persian fonts from Google Fonts (Vazirmatn) and a local fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Minimal reset & dark crimson theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0a0c;
+            background-image: radial-gradient(circle at 10% 20%, rgba(120, 20, 30, 0.15) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 70%, rgba(180, 30, 50, 0.1) 0%, transparent 45%);
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+            color: #e6ddd9;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        /* main container – subtle shadow, minimal width */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(15, 12, 14, 0.85);
+            backdrop-filter: blur(2px);
+            border: 1px solid #4a1e1e;
+            box-shadow: 0 0 20px rgba(180, 30, 50, 0.2), inset 0 0 15px rgba(120, 0, 0, 0.1);
+            border-radius: 18px;
+            padding: 2.2rem 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        /* flickering fool symbol – minimal but noticeable */
+        .fool-symbol {
+            text-align: center;
+            font-size: 3.8rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 8px #b31e2e);
+            animation: flicker 2.8s infinite alternate;
+            color: #d64545;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; text-shadow: 0 0 8px #b31e2e, 0 0 2px #9e1c1c; }
+            25% { opacity: 0.85; text-shadow: 0 0 12px #a52a2a, 0 0 4px #7a1a1a; }
+            50% { opacity: 0.95; text-shadow: 0 0 10px #c03030, 0 0 2px #b31e2e; }
+            75% { opacity: 0.8; text-shadow: 0 0 14px #9e1c1c, 0 0 5px #701010; }
+            100% { opacity: 1; text-shadow: 0 0 8px #b31e2e, 0 0 2px #9e1c1c; }
+        }
+
+        /* headings */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: #f0e3df;
+            margin-bottom: 0.25rem;
+        }
+
+        .subhead {
+            text-align: center;
+            font-weight: 300;
+            color: #bdaa9e;
+            border-bottom: 1px dashed #6b2a2a;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #d64545;
+            margin: 1.8rem 0 0.8rem 0;
+            border-right: 4px solid #b31e2e;
+            padding-right: 0.8rem;
+            letter-spacing: -0.3px;
+        }
+
+        /* skills section – minimal tags */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0 0.8rem;
+        }
+
+        .skill-tag {
+            background: #1f1317;
+            border: 1px solid #5e2a2a;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #e3cfc7;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .skill-tag:hover {
+            border-color: #b33b3b;
+            background: #2c181c;
+            box-shadow: 0 0 8px #8b1e1e;
+        }
+
+        .fun-fact {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #b99b8b;
+            padding: 0.7rem 1rem;
+            background: rgba(80, 20, 20, 0.2);
+            border-radius: 8px;
+            border-right: 3px solid #ac2c2c;
+            font-size: 0.95rem;
+        }
+
+        /* projects / نمونه کار */
+        .no-projects {
+            background: #130e0f;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            border: 1px solid #3a1e1e;
+            color: #cbb2a8;
+            font-size: 1.05rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4rem;
+            box-shadow: inset 0 0 15px rgba(150, 20, 30, 0.15);
+        }
+
+        .no-projects span {
+            font-weight: 600;
+            color: #d17575;
+        }
+
+        .emoji {
+            font-size: 1.4rem;
+            vertical-align: middle;
+        }
+
+        /* contact links – hide actual destination, minimal */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #1b1113;
+            border: 1px solid #6b2e2e;
+            color: #e6d7d0;
+            padding: 0.7rem 1.3rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: 0.15s;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+            flex: 0 1 auto;
+        }
+
+        .contact-btn:hover {
+            background: #2b181b;
+            border-color: #b33b3b;
+            color: #fff0ea;
+            box-shadow: 0 0 12px #7a1f1f;
+        }
+
+        .contact-btn i {
+            font-style: normal;
+            font-size: 1.1rem;
+        }
+
+        /* quote at bottom */
+        .quote {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #3a1e1e;
+            text-align: center;
+            color: #ad8f82;
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 0.2px;
+        }
+
+        .quote .author {
+            display: block;
+            margin-top: 0.4rem;
+            color: #b55b5b;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.85rem;
+        }
+
+        /* tiny responsiveness */
+        @media (max-width: 480px) {
+            body { padding: 0.8rem; }
+            .container { padding: 1.5rem 1.2rem; }
+            h1 { font-size: 1.8rem; }
+            .fool-symbol { font-size: 3rem; }
+            .contact-btn { padding: 0.6rem 1rem; }
+        }
+
+        /* subtle tarot-ish detail – small arcana lines */
+        .decor-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b31e2e, transparent);
+            margin: 1rem auto 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- The Fool symbol ✦ tarot club hint (minimal flicker) -->
+        <div class="fool-symbol" aria-label="نماد احمق (تاروت)">🃏</div>
+
+        <h1>بهبد حمزه لو</h1>
+        <div class="subhead">دانشجوی مهندسی نرم‌افزار — دانشگاه ملی مهارت امیرکبیر اراک</div>
+
+        <!-- about / skills with a funny line -->
+        <h2>مهارت‌ها</h2>
+        <div class="skills">
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">مفاهیم گیم‌دولوپمنت</span>
+            <span class="skill-tag">موتور Godot</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">لینوکس</span>
+        </div>
+        <div class="fun-fact">
+            ⏳ بهترین مهارت من؟ سپری کردن ساعت‌های طولانی با رمان‌های فانتزی — مخصوصاً «ارباب رازها».
+        </div>
+
+        <!-- نمونه کار / projects: funny line no real projects -->
+        <h2>نمونه کار</h2>
+        <div class="no-projects">
+            <span>متأسفم، هنوز پروژه‌ای که ازش خجالت نکشم و بتونم نشون بدم ندارم <span class="emoji">😅</span></span>
+            <small style="color: #9b7e72;">در حال یادگیری و ساختن چیزهای کوچک…</small>
+        </div>
+
+        <!-- contact me (با لینک‌های طنز‌آمیز) -->
+        <h2>ارتباط با من</h2>
+        <div class="contact-links">
+            <!-- GitHub واقعی -->
+            <a href="https://github.com/Behbody" target="_blank" rel="noopener" class="contact-btn">
+                <i>🐙</i> گیت‌هاب
+            </a>
+            <!-- ایمیل واقعی -->
+            <a href="mailto:dantbeacant@gmail.com" class="contact-btn">
+                <i>✉️</i> ایمیل
+            </a>
+            <!-- اینستاگرام: لینک به پیج هیدئو کوجیما (اما نمی‌گیم کجاست) -->
+            <a href="https://www.instagram.com/hideo_kojima/" target="_blank" rel="noopener" class="contact-btn">
+                <i>📷</i> اینستاگرام من
+            </a>
+            <!-- یوتیوب: لینک به کانال هیدئو کوجیما (بدون اشاره) -->
+            <a href="https://www.youtube.com/@HIDEO_KOJIMA_EN" target="_blank" rel="noopener" class="contact-btn">
+                <i>▶️</i> یوتیوب من
+            </a>
+        </div>
+
+        <!-- نقل قول از کلاین مورتی -->
+        <div class="quote">
+            «حتی اگر بی‌معنا باشد، بعضی کارها را باز هم باید انجام داد»
+            <span class="author">— کلاین مورتی</span>
+        </div>
+        <!-- decorative line (minimal) -->
+        <div class="decor-line"></div>
+        <!-- footer: ساخته شده با قهوه، بدون فانتزی -->
+        <div style="text-align: center; font-size: 0.8rem; color: #7a4f4f; margin-top: 0.8rem; letter-spacing: 0.5px;">
+            ساخته شده با ☕ توسط بهبد حمزه لو
+        </div>
+    </div>
+</body>
+</html>
