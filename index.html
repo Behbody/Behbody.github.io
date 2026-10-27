@@ -2,333 +2,89 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بهبد حمزه لو | دانشجوی مهندسی نرم‌افزار</title>
-    <!-- Persian fonts from Google Fonts (Vazirmatn) and a local fallback -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Minimal reset & dark crimson theme */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0b0a0c;
-            background-image: radial-gradient(circle at 10% 20%, rgba(120, 20, 30, 0.15) 0%, transparent 40%),
-                              radial-gradient(circle at 90% 70%, rgba(180, 30, 50, 0.1) 0%, transparent 45%);
-            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
-            color: #e6ddd9;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem;
-        }
-
-        /* main container – subtle shadow, minimal width */
-        .container {
-            max-width: 900px;
-            width: 100%;
-            background: rgba(15, 12, 14, 0.85);
-            backdrop-filter: blur(2px);
-            border: 1px solid #4a1e1e;
-            box-shadow: 0 0 20px rgba(180, 30, 50, 0.2), inset 0 0 15px rgba(120, 0, 0, 0.1);
-            border-radius: 18px;
-            padding: 2.2rem 1.8rem;
-            margin: 1.5rem 0;
-        }
-
-        /* The Fool tarot icon – simple SVG, minimalist, with flicker */
-        .fool-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            animation: flicker 3s infinite alternate;
-            filter: drop-shadow(0 0 10px #b31e2e);
-        }
-
-        .fool-icon svg {
-            width: 72px;
-            height: 72px;
-            transition: transform 0.2s ease;
-        }
-
-        .fool-icon svg .stroke {
-            stroke: #c04545;
-            stroke-width: 1.8;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .fool-icon svg .fill {
-            fill: #b31e2e;
-            opacity: 0.85;
-        }
-
-        @keyframes flicker {
-            0%   { opacity: 1;    filter: drop-shadow(0 0 8px #b31e2e) drop-shadow(0 0 2px #9e1c1c); }
-            25%  { opacity: 0.82; filter: drop-shadow(0 0 13px #a52a2a) drop-shadow(0 0 4px #7a1a1a); }
-            50%  { opacity: 0.96; filter: drop-shadow(0 0 10px #c03030) drop-shadow(0 0 2px #b31e2e); }
-            75%  { opacity: 0.78; filter: drop-shadow(0 0 15px #9e1c1c) drop-shadow(0 0 5px #701010); }
-            100% { opacity: 1;    filter: drop-shadow(0 0 8px #b31e2e) drop-shadow(0 0 2px #9e1c1c); }
-        }
-
-        /* headings */
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            text-align: center;
-            color: #f0e3df;
-            margin-bottom: 0.25rem;
-        }
-
-        .subhead {
-            text-align: center;
-            font-weight: 300;
-            color: #bdaa9e;
-            border-bottom: 1px dashed #6b2a2a;
-            padding-bottom: 1.2rem;
-            margin-bottom: 1.8rem;
-            font-size: 1rem;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #d64545;
-            margin: 1.8rem 0 0.8rem 0;
-            border-right: 4px solid #b31e2e;
-            padding-right: 0.8rem;
-            letter-spacing: -0.3px;
-        }
-
-        /* skills section – minimal tags */
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin: 1rem 0 0.8rem;
-        }
-
-        .skill-tag {
-            background: #1f1317;
-            border: 1px solid #5e2a2a;
-            padding: 0.4rem 1rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #e3cfc7;
-            transition: all 0.15s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        }
-
-        .skill-tag:hover {
-            border-color: #b33b3b;
-            background: #2c181c;
-            box-shadow: 0 0 8px #8b1e1e;
-        }
-
-        /* projects / نمونه کار */
-        .no-projects {
-            background: #130e0f;
-            padding: 1.2rem 1.5rem;
-            border-radius: 14px;
-            border: 1px solid #3a1e1e;
-            color: #cbb2a8;
-            font-size: 1.05rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.4rem;
-            box-shadow: inset 0 0 15px rgba(150, 20, 30, 0.15);
-        }
-
-        .no-projects span {
-            font-weight: 600;
-            color: #d17575;
-        }
-
-        .emoji {
-            font-size: 1.4rem;
-            vertical-align: middle;
-        }
-
-        /* contact links – hide actual destination, minimal */
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: #1b1113;
-            border: 1px solid #6b2e2e;
-            color: #e6d7d0;
-            padding: 0.7rem 1.3rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.15s;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
-            flex: 0 1 auto;
-        }
-
-        .contact-btn:hover {
-            background: #2b181b;
-            border-color: #b33b3b;
-            color: #fff0ea;
-            box-shadow: 0 0 12px #7a1f1f;
-        }
-
-        .contact-btn i {
-            font-style: normal;
-            font-size: 1.1rem;
-        }
-
-        /* quote at bottom */
-        .quote {
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #3a1e1e;
-            text-align: center;
-            color: #ad8f82;
-            font-size: 0.95rem;
-            font-style: italic;
-            letter-spacing: 0.2px;
-        }
-
-        .quote .author {
-            display: block;
-            margin-top: 0.4rem;
-            color: #b55b5b;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 0.85rem;
-        }
-
-        /* tiny responsiveness */
-        @media (max-width: 480px) {
-            body { padding: 0.8rem; }
-            .container { padding: 1.5rem 1.2rem; }
-            h1 { font-size: 1.8rem; }
-            .fool-icon svg { width: 60px; height: 60px; }
-            .contact-btn { padding: 0.6rem 1rem; }
-        }
-
-        /* subtle tarot-ish detail – small arcana lines */
-        .decor-line {
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #b31e2e, transparent);
-            margin: 1rem auto 1rem;
-        }
-    </style>
+    <title>آشنایی با هوش مصنوعی</title>
 </head>
 <body>
-    <div class="container">
-        <!-- The Fool (کارت تاروت) – آیکون ساده و مینیمال -->
-        <div class="fool-icon" aria-label="کارت احمق – تاروت">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- پرتوهای نور / هاله -->
-                <circle cx="50" cy="50" r="42" class="stroke" stroke-width="1.2" opacity="0.5"/>
-                <circle cx="50" cy="50" r="38" class="stroke" stroke-width="0.8" opacity="0.3"/>
-                
-                <!-- چهره/نماد احمق – ساده -->
-                <!-- کلاه/شکل سر -->
-                <path d="M35 38 Q50 18 65 38" class="stroke" stroke-width="1.8"/>
-                <line x1="50" y1="22" x2="50" y2="30" class="stroke" stroke-width="1.6"/>
-                <circle cx="50" cy="32" r="2" class="fill"/>
-                
-                <!-- چوبدستی -->
-                <line x1="68" y1="42" x2="78" y2="62" class="stroke" stroke-width="1.8"/>
-                <!-- گره/کیسه روی چوب -->
-                <circle cx="74" cy="56" r="4" class="stroke" stroke-width="1.3"/>
-                
-                <!-- دست‌ها -->
-                <path d="M38 45 Q30 52 28 60" class="stroke" stroke-width="1.5"/>
-                <path d="M62 45 Q70 52 72 60" class="stroke" stroke-width="1.5"/>
-                
-                <!-- بدن / لباس -->
-                <path d="M42 48 L45 70 L55 70 L58 48" class="stroke" stroke-width="1.5"/>
-                
-                <!-- پاها -->
-                <line x1="47" y1="70" x2="44" y2="80" class="stroke" stroke-width="1.5"/>
-                <line x1="53" y1="70" x2="56" y2="80" class="stroke" stroke-width="1.5"/>
-                
-                <!-- سگ کوچک در پایین (نماد کارت فول) -->
-                <path d="M30 82 Q28 78 26 80 Q24 78 22 82" class="stroke" stroke-width="1.2"/>
-                <circle cx="26" cy="80" r="1.2" class="fill"/>
-                
-                <!-- ستاره‌های کوچک اطراف -->
-                <circle cx="25" cy="30" r="1.2" class="fill" opacity="0.7"/>
-                <circle cx="76" cy="28" r="1" class="fill" opacity="0.6"/>
-                <circle cx="80" cy="45" r="1.3" class="fill" opacity="0.5"/>
-            </svg>
-        </div>
+    <!-- صفحه اصلی پروژه دانشجویی -->
 
-        <h1>بهبد حمزه لو</h1>
-        <div class="subhead">دانشجوی مهندسی نرم‌افزار — دانشگاه ملی مهارت امیرکبیر اراک</div>
+    <div>
+        <h1>آشنایی با هوش مصنوعی</h1>
 
-        <!-- about / skills -->
-        <h2>مهارت‌ها</h2>
-        <div class="skills">
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">مفاهیم گیم‌دولوپمنت</span>
-            <span class="skill-tag">موتور Godot</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">لینوکس</span>
-        </div>
+        <p>
+            سلام! به وب‌سایت من خوش آمدید.
+            در این صفحه می‌خواهم کمی درباره هوش مصنوعی صحبت کنم؛
+            موضوعی که این روزها در برنامه‌ها، گوشی‌های هوشمند و حتی
+            موتورهای جست‌وجو با آن روبه‌رو می‌شویم.
+        </p>
 
-        <!-- نمونه کار / projects: funny line no real projects -->
-        <h2>نمونه کار</h2>
-        <div class="no-projects">
-            <span>متأسفم، هنوز پروژه‌ای که ازش خجالت نکشم و بتونم نشون بدم ندارم <span class="emoji">😅</span></span>
-            <small style="color: #9b7e72;">در حال یادگیری و ساختن چیزهای کوچک…</small>
-        </div>
+        <p>
+            شاید برای شما هم پیش آمده باشد که از یک چت‌بات سؤال بپرسید
+            یا برنامه‌ای را ببینید که می‌تواند عکس‌ها را تشخیص دهد.
+            این‌ها نمونه‌هایی از کاربردهای هوش مصنوعی هستند.
+        </p>
 
-        <!-- contact me (با لینک‌های طنز‌آمیز) -->
-        <h2>ارتباط با من</h2>
-        <div class="contact-links">
-            <!-- GitHub واقعی -->
-            <a href="https://github.com/Behbody" target="_blank" rel="noopener" class="contact-btn">
-                <i>🐙</i> گیت‌هاب
-            </a>
-            <!-- ایمیل واقعی -->
-            <a href="mailto:dantbeacant@gmail.com" class="contact-btn">
-                <i>✉️</i> ایمیل
-            </a>
-            <!-- اینستاگرام: لینک به پیج هیدئو کوجیما (اما نمی‌گیم کجاست) -->
-            <a href="https://www.instagram.com/hideo_kojima/" target="_blank" rel="noopener" class="contact-btn">
-                <i>📷</i> اینستاگرام من
-            </a>
-            <!-- یوتیوب: لینک به کانال هیدئو کوجیما (بدون اشاره) -->
-            <a href="https://www.youtube.com/@HIDEO_KOJIMA_EN" target="_blank" rel="noopener" class="contact-btn">
-                <i>▶️</i> یوتیوب من
-            </a>
-        </div>
+        <img src="images/ai-concept.svg"
+             alt="تصویر مفهومی هوش مصنوعی"
+             width="320"
+             height="180">
+    </div>
 
-        <!-- نقل قول از کلاین مورتی -->
-        <div class="quote">
-            «حتی اگر بی‌معنا باشد، بعضی کارها را باز هم باید انجام داد»
-            <span class="author">— کلاین مورتی</span>
-        </div>
-        <!-- decorative line (minimal) -->
-        <div class="decor-line"></div>
-        <!-- footer: ساخته شده با قهوه -->
-        <div style="text-align: center; font-size: 0.8rem; color: #7a4f4f; margin-top: 0.8rem; letter-spacing: 0.5px;">
-            ساخته شده با ☕ توسط بهبد حمزه لو
-        </div>
+    <div>
+        <h2>در این وب‌سایت چه می‌خوانیم؟</h2>
+
+        <p>
+            در صفحه پژوهش، چند موضوع مرتبط با هوش مصنوعی را به زبان ساده
+            بررسی می‌کنیم:
+        </p>
+
+        <ul>
+            <li>هوش مصنوعی چیست و چه کاربردهایی دارد؟</li>
+            <li>مدل، عامل هوشمند و چت‌بات چه تفاوتی با هم دارند؟</li>
+            <li>یادگیری ماشین چگونه به سیستم‌ها کمک می‌کند؟</li>
+            <li>چطور می‌توان بعضی مدل‌های هوش مصنوعی را روی رایانه شخصی اجرا کرد؟</li>
+        </ul>
+
+        <p>
+            <a href="research.html">برای خواندن توضیحات بیشتر، وارد صفحه پژوهش شوید.</a>
+        </p>
+    </div>
+
+    <div>
+        <h2>هوش مصنوعی به زبان ساده</h2>
+
+        <p>
+            <b>هوش مصنوعی</b> یا <i>Artificial Intelligence</i>
+            به فناوری‌هایی گفته می‌شود که به رایانه امکان می‌دهند
+            کارهایی مانند پردازش زبان، تشخیص تصویر و پاسخ‌دادن به پرسش‌ها
+            را انجام دهد.
+        </p>
+
+        <p>
+            البته هوش مصنوعی لزوماً مثل انسان فکر یا احساس نمی‌کند.
+            این سیستم‌ها معمولاً با استفاده از داده‌ها و روش‌های محاسباتی
+            آموزش می‌بینند و بر اساس آنچه یاد گرفته‌اند، نتیجه تولید می‌کنند.
+        </p>
+
+        <p>
+            من این موضوع را برای آشنایی بیشتر با یکی از فناوری‌های مهم
+            دنیای کامپیوتر انتخاب کرده‌ام و در صفحه بعد، اطلاعات بیشتری
+            درباره آن آورده‌ام.
+        </p>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>مشخصات دانشجو</h2>
+
+        <p><b>نام دانشجو:</b> بهبد حمزه‌لو</p>
+        <p><b>رشته:</b> کاردانی کامپیوتر نرم‌افزار</p>
+        <p><b>دانشگاه:</b> دانشگاه ملی مهارت، آموزشکده فنی امیرکبیر اراک</p>
+        <p><b>استاد درس:</b> سیدوحید حیدری</p>
+
+        <p>
+            <small>این وب‌سایت صرفاً برای تمرین و یادگیری طراحی شده است.</small>
+        </p>
     </div>
 </body>
 </html>
